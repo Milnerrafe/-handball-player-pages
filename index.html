@@ -7,32 +7,29 @@
         <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
-        <div class="container">
-            <div class="tabs">
-                <button onclick="showMode('normal')" class="active">
-                    Normal View
-                </button>
-                <button onclick="showMode('leaderboard')">Leaderboard</button>
-            </div>
+        <header>
+            <h1>Handball Player Tracker</h1>
+            <button onclick="showMode('normal')">Normal View</button>
+            <button onclick="showMode('leaderboard')">Leaderboard</button>
+        </header>
+
+        <main>
             <div id="player-list"></div>
-            <div id="add-player-modal" class="modal">
-                <div class="modal-content">
-                    <span class="close" onclick="closeAddPlayerModal()"
-                        >&times;</span
-                    >
-                    <h2>Add Player</h2>
-                    <form onsubmit="event.preventDefault(); submitAddPlayer();">
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" required />
-                        <label for="img">Image URL:</label>
-                        <input type="text" id="img" required />
-                        <button type="submit">Add Player</button>
-                    </form>
-                    <div id="modal-error" class="error-message"></div>
-                </div>
+        </main>
+
+        <div id="add-player-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeAddPlayerModal()"
+                    >&times;</span
+                >
+                <h2>Add New Player</h2>
+                <input type="text" id="name" placeholder="Player Name" />
+                <input type="text" id="img" placeholder="Profile Image URL" />
+                <button onclick="submitAddPlayer()">Add Player</button>
+                <div id="modal-error" class="error"></div>
             </div>
-            <button onclick="openAddPlayerModal()">Add Player</button>
         </div>
+
         <script src="app.js"></script>
     </body>
 </html>

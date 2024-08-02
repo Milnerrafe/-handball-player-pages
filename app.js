@@ -26,16 +26,16 @@ function renderPlayers(players) {
       const playerItem = document.createElement("div");
       playerItem.className = "player-item";
       playerItem.innerHTML = `
-        <img src="${player.img}" alt="${player.name}" />
+        <img src="${player.img}" alt="${player.name}" class="profile-pic" />
         <span>${player.name}</span>
         <span>King: ${player.king}</span>
         <span>Pawn: ${player.pawn}</span>
         <span>Knight: ${player.knight}</span>
         <span>Queen: ${player.queen}</span>
-        <button onclick="updatePlayer('${player.index}', 'pawn')">Add Pawn</button> (${player.pawn})
-        <button onclick="updatePlayer('${player.index}', 'knight')">Add Knight</button> (${player.knight})
-        <button onclick="updatePlayer('${player.index}', 'queen')">Add Queen</button> (${player.queen})
-        <button onclick="updatePlayer('${player.index}', 'king')">Add King</button> (${player.king})
+        <button onclick="updatePlayer('${player.index}', 'pawn')">Add Pawn</button>
+        <button onclick="updatePlayer('${player.index}', 'knight')">Add Knight</button>
+        <button onclick="updatePlayer('${player.index}', 'queen')">Add Queen</button>
+        <button onclick="updatePlayer('${player.index}', 'king')">Add King</button>
       `;
       playerList.appendChild(playerItem);
     });
@@ -44,7 +44,7 @@ function renderPlayers(players) {
       const playerItem = document.createElement("div");
       playerItem.className = "player-item";
       playerItem.innerHTML = `
-        <img src="${player.img}" alt="${player.name}" />
+        <img src="${player.img}" alt="${player.name}" class="profile-pic" />
         <span>${player.name}</span>
         <span>King: ${player.king}</span>
       `;
