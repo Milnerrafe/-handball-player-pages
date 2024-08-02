@@ -1,10 +1,14 @@
 document.addEventListener("DOMContentLoaded", loadPlayers);
 
+let currentView = "normal";
+
 async function loadPlayers() {
   try {
-    const response = await fetch(
-      "https://handball-player-worker.milnerrafe.workers.dev/api",
-    );
+    let url = "https://handball-player-worker.milnerrafe.workers.dev/api";
+    if (currentView === "leaderboard") {
+      url += "/leaderboard";
+    }
+    const response = await fetch(url);
     if (!response.ok) throw new Error("Failed to fetch players");
     const players = await response.json();
     renderPlayers(players);
@@ -16,24 +20,37 @@ async function loadPlayers() {
 function renderPlayers(players) {
   const playerList = document.getElementById("player-list");
   playerList.innerHTML = "";
-  players.sort((a, b) => a.index - b.index); // Sort players by index
-  players.forEach((player) => {
-    const playerItem = document.createElement("div");
-    playerItem.className = "player-item";
-    playerItem.innerHTML = `
-      <img src="${player.img}" alt="${player.name}" />
-      <span>${player.name}</span>
-      <span>King: ${player.king}</span>
-      <span>Pawn: ${player.pawn}</span>
-      <span>Knight: ${player.knight}</span>
-      <span>Queen: ${player.queen}</span>
-      <button onclick="updatePlayer('${player.index}', 'pawn')">Add Pawn</button> (${player.pawn})
-      <button onclick="updatePlayer('${player.index}', 'knight')">Add Knight</button> (${player.knight})
-      <button onclick="updatePlayer('${player.index}', 'queen')">Add Queen</button> (${player.queen})
-      <button onclick="updatePlayer('${player.index}', 'king')">Add King</button> (${player.king})
-    `;
-    playerList.appendChild(playerItem);
-  });
+  if (currentView === "normal") {
+    players.sort((a, b) => a.index - b.index); // Sort players by index
+    players.forEach((player) => {
+      const playerItem = document.createElement("div");
+      playerItem.className = "player-item";
+      playerItem.innerHTML = `
+        <img src="${player.img}" alt="${player.name}" />
+        <span>${player.name}</span>
+        <span>King: ${player.king}</span>
+        <span>Pawn: ${player.pawn}</span>
+        <span>Knight: ${player.knight}</span>
+        <span>Queen: ${player.queen}</span>
+        <button onclick="updatePlayer('${player.index}', 'pawn')">Add Pawn</button> (${player.pawn})
+        <button onclick="updatePlayer('${player.index}', 'knight')">Add Knight</button> (${player.knight})
+        <button onclick="updatePlayer('${player.index}', 'queen')">Add Queen</button> (${player.queen})
+        <button onclick="updatePlayer('${player.index}', 'king')">Add King</button> (${player.king})
+      `;
+      playerList.appendChild(playerItem);
+    });
+  } else if (currentView === "leaderboard") {
+    players.forEach((player) => {
+      const playerItem = document.createElement("div");
+      playerItem.className = "player-item";
+      playerItem.innerHTML = `
+        <img src="${player.img}" alt="${player.name}" />
+        <span>${player.name}</span>
+        <span>King: ${player.king}</span>
+      `;
+      playerList.appendChild(playerItem);
+    });
+  }
 }
 
 async function submitAddPlayer() {
@@ -98,4 +115,9 @@ async function updatePlayer(index, role) {
   } catch (error) {
     showError(error.message);
   }
+}
+
+function showMode(mode) {
+  currentView = mode;
+  loadPlayers();
 }
