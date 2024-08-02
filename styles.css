@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+.tabs {
+    margin-bottom: 20px;
+}
+
+.tabs button {
+    background-color: #007bfc;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.tabs button:hover {
+    background-color: #005bb5;
+}
+
+#player-list,
+#leaderboard-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.player-item,
+.leaderboard-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 5px;
+}

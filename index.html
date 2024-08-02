@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Handball Player Tracker</title>
+        <link rel="stylesheet" href="/styles.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1>Handball Player Tracker</h1>
+            <div class="tabs">
+                <button onclick="showMode('normal')">Normal Mode</button>
+                <button onclick="showMode('leaderboard')">Leaderboard</button>
+            </div>
+            <div id="normal-mode">
+                <button onclick="addPlayer()">Add Player</button>
+                <div id="player-list"></div>
+            </div>
+            <div id="leaderboard-mode" style="display: none">
+                <div id="leaderboard-list"></div>
+            </div>
+        </div>
+        <script src="/app.js"></script>
+    </body>
+</html>
