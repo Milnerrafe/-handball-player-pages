@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <script src="/app.js"></script>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Handball Player Tracker</title>
@@ -15,12 +14,33 @@
                 <button onclick="showMode('leaderboard')">Leaderboard</button>
             </div>
             <div id="normal-mode">
-                <button onclick="addPlayer()">Add Player</button>
+                <button onclick="openAddPlayerModal()">Add Player</button>
                 <div id="player-list"></div>
             </div>
             <div id="leaderboard-mode" style="display: none">
                 <div id="leaderboard-list"></div>
             </div>
         </div>
+
+        <!-- Modal for adding player -->
+        <div id="add-player-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeAddPlayerModal()"
+                    >&times;</span
+                >
+                <h2>Add Player</h2>
+                <form id="add-player-form">
+                    <label for="name">Player Name:</label>
+                    <input type="text" id="name" required />
+                    <label for="img">Image URL:</label>
+                    <input type="url" id="img" required />
+                    <button type="button" onclick="submitAddPlayer()">
+                        Add Player
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <script src="/app.js"></script>
     </body>
 </html>
