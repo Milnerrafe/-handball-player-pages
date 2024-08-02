@@ -7,7 +7,7 @@ async function loadPlayers() {
     const players = await response.json();
     renderPlayers(players);
   } catch (error) {
-    console.error("Error loading players:", error);
+    showError(error.message);
   }
 }
 
@@ -41,7 +41,7 @@ async function updatePlayer(index, role) {
     if (!response.ok) throw new Error("Failed to update player");
     loadPlayers();
   } catch (error) {
-    console.error(`Error updating player ${index}:`, error);
+    showError(error.message);
   }
 }
 
@@ -81,7 +81,18 @@ async function submitAddPlayer() {
       closeAddPlayerModal();
       loadPlayers();
     } catch (error) {
-      console.error("Error adding player:", error);
+      showError(error.message);
     }
   }
+}
+
+function showError(message) {
+  const toast = document.createElement("div");
+  toast.className = "toast show";
+  toast.innerText = message;
+  document.body.appendChild(toast);
+  setTimeout(() => {
+    toast.classList.remove("show");
+    setTimeout(() => document.body.removeChild(toast), 300);
+  }, 3000);
 }
