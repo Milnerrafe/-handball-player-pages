@@ -2,7 +2,9 @@ document.addEventListener("DOMContentLoaded", loadPlayers);
 
 async function loadPlayers() {
   try {
-    const response = await fetch("https://milnerrafe.workers.dev/api");
+    const response = await fetch(
+      "https://handball-player-worker.milnerrafe.workers.dev/api",
+    );
     if (!response.ok) throw new Error("Failed to fetch players");
     const players = await response.json();
     renderPlayers(players);
@@ -33,11 +35,14 @@ function renderPlayers(players) {
 
 async function updatePlayer(index, role) {
   try {
-    const response = await fetch("https://milnerrafe.workers.dev/api", {
-      method: "POST",
-      body: JSON.stringify({ index, role }),
-      headers: { "Content-Type": "application/json" },
-    });
+    const response = await fetch(
+      "https://handball-player-worker.milnerrafe.workers.dev/api",
+      {
+        method: "POST",
+        body: JSON.stringify({ index, role }),
+        headers: { "Content-Type": "application/json" },
+      },
+    );
     if (!response.ok) throw new Error("Failed to update player");
     loadPlayers();
   } catch (error) {
@@ -65,18 +70,21 @@ async function submitAddPlayer() {
   const img = document.getElementById("img").value;
   if (name && img) {
     try {
-      const response = await fetch("https://milnerrafe.workers.dev/api", {
-        method: "POST",
-        body: JSON.stringify({
-          name,
-          img,
-          king: 0,
-          pawn: 0,
-          knight: 0,
-          queen: 0,
-        }),
-        headers: { "Content-Type": "application/json" },
-      });
+      const response = await fetch(
+        "https://handball-player-worker.milnerrafe.workers.dev/api",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            name,
+            img,
+            king: 0,
+            pawn: 0,
+            knight: 0,
+            queen: 0,
+          }),
+          headers: { "Content-Type": "application/json" },
+        },
+      );
       if (!response.ok) throw new Error("Failed to add player");
       closeAddPlayerModal();
       loadPlayers();
