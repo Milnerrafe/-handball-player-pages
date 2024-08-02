@@ -4,43 +4,35 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Handball Player Tracker</title>
-        <link rel="stylesheet" href="/styles.css" />
+        <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
         <div class="container">
-            <h1>Handball Player Tracker</h1>
             <div class="tabs">
-                <button onclick="showMode('normal')">Normal Mode</button>
+                <button onclick="showMode('normal')" class="active">
+                    Normal View
+                </button>
                 <button onclick="showMode('leaderboard')">Leaderboard</button>
             </div>
-            <div id="normal-mode">
-                <button onclick="openAddPlayerModal()">Add Player</button>
-                <div id="player-list"></div>
+            <div id="player-list"></div>
+            <div id="add-player-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeAddPlayerModal()"
+                        >&times;</span
+                    >
+                    <h2>Add Player</h2>
+                    <form onsubmit="event.preventDefault(); submitAddPlayer();">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" required />
+                        <label for="img">Image URL:</label>
+                        <input type="text" id="img" required />
+                        <button type="submit">Add Player</button>
+                    </form>
+                    <div id="modal-error" class="error-message"></div>
+                </div>
             </div>
-            <div id="leaderboard-mode" style="display: none">
-                <div id="leaderboard-list"></div>
-            </div>
+            <button onclick="openAddPlayerModal()">Add Player</button>
         </div>
-
-        <!-- Modal for adding player -->
-        <div id="add-player-modal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeAddPlayerModal()"
-                    >&times;</span
-                >
-                <h2>Add Player</h2>
-                <form id="add-player-form">
-                    <label for="name">Player Name:</label>
-                    <input type="text" id="name" required />
-                    <label for="img">Image URL:</label>
-                    <input type="url" id="img" required />
-                    <button type="button" onclick="submitAddPlayer()">
-                        Add Player
-                    </button>
-                </form>
-            </div>
-        </div>
-
-        <script src="/app.js"></script>
+        <script src="app.js"></script>
     </body>
 </html>
