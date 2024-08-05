@@ -24,8 +24,18 @@
                     >&times;</span
                 >
                 <h2>Add New Player</h2>
-                <input type="text" id="name" placeholder="Player Name" />
-                <input type="text" id="img" placeholder="Profile Image URL" />
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Player Name"
+                    autocomplete="given-name"
+                />
+                <input
+                    type="text"
+                    id="img"
+                    placeholder="Profile Image URL"
+                    autocomplete="photo"
+                />
                 <button onclick="submitAddPlayer()">Add Player</button>
                 <div id="modal-error" class="error"></div>
             </div>
