@@ -38,7 +38,7 @@ function renderPlayers(players) {
                     </button>
                     <button class="point-button" onclick="updatePlayer('${player.index}', 'queen')">
                         <div class="point-value">1</div>
-                        <div class="point-text">points</div>
+                        <div class="point-text">point</div>
                     </button>
                 </div>
             `;
