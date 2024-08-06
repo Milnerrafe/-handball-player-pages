@@ -25,29 +25,30 @@ function renderPlayers(players) {
     players.forEach((player) => {
       const playerItem = document.createElement("div");
       playerItem.className = "player-item";
+      const score = player.king * 2 + player.queen * 1;
       playerItem.innerHTML = `
-        <img src="${player.img}" alt="${player.name}" class="profile-pic" />
-        <span>${player.name}</span>
-        <span>King: ${player.king}</span>
-        <span>Pawn: ${player.pawn}</span>
-        <span>Knight: ${player.knight}</span>
-        <span>Queen: ${player.queen}</span>
-        <button onclick="updatePlayer('${player.index}', 'pawn')">Add Pawn</button>
-        <button onclick="updatePlayer('${player.index}', 'knight')">Add Knight</button>
-        <button onclick="updatePlayer('${player.index}', 'queen')">Add Queen</button>
-        <button onclick="updatePlayer('${player.index}', 'king')">Add King</button>
-      `;
+                <div class="player-info">
+                    <span class="player-name">${player.name}</span>
+                    <div class="player-score">Score: ${score}</div>
+                </div>
+                <div class="player-controls">
+                    <button onclick="updatePlayer('${player.index}', 'king')">Add 2 Points (King)</button>
+                    <button onclick="updatePlayer('${player.index}', 'queen')">Add 1 Point (Queen)</button>
+                </div>
+            `;
       playerList.appendChild(playerItem);
     });
   } else if (currentView === "leaderboard") {
     players.forEach((player) => {
+      const score = player.king * 2 + player.queen * 1;
       const playerItem = document.createElement("div");
       playerItem.className = "player-item";
       playerItem.innerHTML = `
-        <img src="${player.img}" alt="${player.name}" class="profile-pic" />
-        <span>${player.name}</span>
-        <span>King: ${player.king}</span>
-      `;
+                <div class="player-info">
+                    <span class="player-name">${player.name}</span>
+                    <div class="player-score">Score: ${score}</div>
+                </div>
+            `;
       playerList.appendChild(playerItem);
     });
   }
@@ -70,8 +71,6 @@ async function submitAddPlayer() {
           name,
           img,
           king: 0,
-          pawn: 0,
-          knight: 0,
           queen: 0,
         }),
       },
