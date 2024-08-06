@@ -60,17 +60,35 @@ main {
     color: #333;
 }
 
-.player-controls button {
-    margin: 0.5em 0;
-    padding: 0.5em 1em;
+.player-controls {
+    display: flex;
+    gap: 1em;
+}
+
+.point-button {
+    width: 50px;
+    height: 50px;
     border: none;
-    background-color: #28a745;
+    border-radius: 50%;
+    background-color: #007bff;
     color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
 }
 
-.player-controls button:hover {
-    background-color: #218838;
+.point-button .point-value {
+    font-size: 1.5em;
+}
+
+.point-button .point-text {
+    font-size: 0.75em;
+}
+
+.point-button:hover {
+    background-color: #0056b3;
 }
 
 .modal {

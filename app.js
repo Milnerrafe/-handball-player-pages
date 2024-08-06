@@ -32,8 +32,14 @@ function renderPlayers(players) {
                     <div class="player-score">Score: ${score}</div>
                 </div>
                 <div class="player-controls">
-                    <button onclick="updatePlayer('${player.index}', 'king')">Add 2 Points (King)</button>
-                    <button onclick="updatePlayer('${player.index}', 'queen')">Add 1 Point (Queen)</button>
+                    <button class="point-button" onclick="updatePlayer('${player.index}', 'king')">
+                        <div class="point-value">2</div>
+                        <div class="point-text">points</div>
+                    </button>
+                    <button class="point-button" onclick="updatePlayer('${player.index}', 'queen')">
+                        <div class="point-value">1</div>
+                        <div class="point-text">points</div>
+                    </button>
                 </div>
             `;
       playerList.appendChild(playerItem);
