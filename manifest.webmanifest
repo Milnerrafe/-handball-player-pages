@@ -1,0 +1,27 @@
+{
+    "short_name": "HandBall Tracker",
+    "name": "HandBall Player Tracker",
+    "icons": [
+      {
+        "src": "/images/icons-vector.svg",
+        "type": "image/svg+xml",
+        "sizes": "512x512"
+      },
+      {
+        "src": "/images/icons-192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "/images/icons-512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "id": "/index.html",
+    "start_url": "/index.html",
+    "background_color": "#ECA400",
+    "display": "minimal-ui",
+    "scope": "../",
+    "theme_color": "#ECA400",
+  }
